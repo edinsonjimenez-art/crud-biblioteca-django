@@ -116,15 +116,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 import os
-
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    BASE_DIR / "biblioteca/static"
-]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -135,3 +126,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "biblioteca/static"
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
