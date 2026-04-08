@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Crear Libro</title>
+
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>Nuevo Libro</h1>
+
+<form method="POST">
+{% csrf_token %}
+
+<label>Título</label>
+<input type="text" name="titulo">
+
+<label>Autor</label>
+<input type="text" name="autor">
+
+<label>Editorial</label>
+<input type="text" name="editorial">
+
+<label>Año</label>
+<input type="number" name="anio">
+
+<label>Disponible</label>
+<input type="checkbox" name="disponible">
+
+<button type="submit">Guardar</button>
+
+</form>
+
+<br>
+<a href="{% url 'lista_libros' %}" class="btn">Volver</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Biblioteca</title>
+
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>Biblioteca</h1>
+
+<a href="{% url 'crear_libro' %}" class="btn">Nuevo Libro</a>
+
+<table>
+<tr>
+<th>ID</th>
+<th>Título</th>
+<th>Autor</th>
+<th>Editorial</th>
+<th>Año</th>
+<th>Disponible</th>
+<th>Acciones</th>
+</tr>
+
+{% for libro in libros %}
+<tr>
+<td>{{ libro.id }}</td>
+<td>{{ libro.titulo }}</td>
+<td>{{ libro.autor }}</td>
+<td>{{ libro.editorial }}</td>
+<td>{{ libro.anio }}</td>
+<td>{{ libro.disponible }}</td>
+<td>
+<a href="{% url 'editar_libro' libro.id %}" class="btn">Editar</a>
+<a href="{% url 'eliminar_libro' libro.id %}" class="btn btn-danger">Eliminar</a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>
