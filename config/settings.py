@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-9n(4846j_x_77*sds(y)74r%!!+el)55v#ztk394^*u#-5%ktt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -115,9 +115,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+import os
 
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "biblioteca/static"
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
